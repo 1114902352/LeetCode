@@ -12,5 +12,9 @@
 	<classpathentry exported="true" kind="lib" path="src/lib/spring-context-support-4.2.0.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/lib/spring-core-4.2.0.RELEASE.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/lib/spring-expression-4.2.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="src/lib/IKAnalyzer3.2.5Stable.jar"/>
+	<classpathentry kind="lib" path="src/lib/lucene-core-3.6.0.jar"/>
+	<classpathentry kind="lib" path="src/lib/lucene-highlighter-3.6.0.jar"/>
+	<classpathentry kind="lib" path="src/lib/lucene-memory-3.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

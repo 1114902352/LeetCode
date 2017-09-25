@@ -1,1 +1,16 @@
+*/target/*
+/target/
+*/.settings/*
+/.settings/
+*/.project
+/.project
+*/.classpath
+/.classpath
+*/.gitignore
+/.gitignore
+*/test-output/*
+/test-output/
+*/pom.xml.versionsBackup
+/pom.xml.versionsBackup
+*/bin/*
 /bin/

@@ -1,7 +1,7 @@
 package com.design.pattern.decorator;
 
 /**
- * ¾ßÌå×°ÊÎ½ÇÉ« Èí¼ş¼Ü¹¹Ê¦Àà Ëû¾ßÓĞ¸½¼ÓµÄ¹¦ÄÜ ÄÜÉè¼Æ×Ü¸öÍøÕ¾»òÏµÍ³µÄ¹Ç
+ * å…·ä½“è£…é¥°è§’è‰² è½¯ä»¶æ¶æ„å¸ˆç±» ä»–å…·æœ‰é™„åŠ çš„åŠŸèƒ½ èƒ½è®¾è®¡æ€»ä¸ªç½‘ç«™æˆ–ç³»ç»Ÿçš„éª¨
  * 
  * @author Administrator
  *
@@ -15,7 +15,7 @@ public class SoftwareArchitect extends Decorator {
 	@Override
 	public void programme() {
 		super.programme();
-		// ¸½¼ÓµÄÔğÈÎ»òÕß¹¦ÄÜ
-		System.out.println("ÎÒ¾ßÓĞ¼Ü¹¹Ê¦µÄ¼¼ÄÜ  ÎÒÄÜÉè¼Æ×Ü¸öÍøÕ¾»òÏµÍ³µÄ¹Ç¼Ü");
+		// é™„åŠ çš„è´£ä»»æˆ–è€…åŠŸèƒ½
+		System.out.println("æˆ‘å…·æœ‰æ¶æ„å¸ˆçš„æŠ€èƒ½  æˆ‘èƒ½è®¾è®¡æ€»ä¸ªç½‘ç«™æˆ–ç³»ç»Ÿçš„éª¨æ¶");
 	}
 }

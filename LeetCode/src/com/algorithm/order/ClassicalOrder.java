@@ -1,22 +1,22 @@
 package com.algorithm.order;
 
 /**
- * ��������:��������ֱ�Ӳ�������ϣ�����򣩣�ѡ�����򣨼�ѡ�����򣬶����򣩣���������ð�����򣬿������򣩣��鲢���򣬻�������
+ * 经典排序:插入排序（直接插入排序，希尔排序），选择排序（简单选择排序，堆排序），交换排序（冒泡排序，快速排序），归并排序，基数排序
  */
 public class ClassicalOrder {
 
 	/**
-	 * ֱ�Ӳ��������(n2)�����(n)��ƽ��O(n2) ԭ����������ߵ�����һ�����򲿷֣�������������β��뵽�ⲿ�ֵĺ���λ��
-	 * ����Ĵ��������鱾����˳��͸����й�
+	 * 直接插入排序：最坏(n2)，最好(n)，平均O(n2) 原理：将最左边的数视一个有序部分，将后面的数依次插入到这部分的合适位置
+	 * 排序的次数与数组本身的顺序和个数有关
 	 */
 	public static void straightInsertionSort(int[] a) {
-		// ֱ�Ӳ�������
+		// 直接插入排序
 		for (int i = 1; i < a.length; i++) {
-			// ������Ԫ��
+			// 待插入元素
 			int temp = a[i];
 			int j;
 			for (j = i - 1; j >= 0; j--) {
-				// ������temp�������ƶ�һλ
+				// 将大于temp的往后移动一位
 				if (a[j] > temp) {
 					a[j + 1] = a[j];
 				} else {
@@ -28,8 +28,8 @@ public class ClassicalOrder {
 	}
 
 	/**
-	 * ���ַ����������(n2/2)�����(n)��ƽ��O(n2) ԭ������ֱ�Ӳ��뷨���ƣ�ֻ����Ѱ�����򲿷�ʱ�����ö��ַ�����
-	 * ����Ĵ���ֻ�����鱾���ĸ������
+	 * 二分法插入排序：最坏(n2/2)，最好(n)，平均O(n2) 原理：与直接插入法类似，只是在寻找有序部分时，运用二分法查找
+	 * 排序的次数只与数组本身的个数相关
 	 */
 	public static void binaryInsertionSorting(int[] a) {
 		for (int i = 0; i < a.length; i++) {
@@ -55,14 +55,14 @@ public class ClassicalOrder {
 	}
 
 	/**
-	 * ϣ���������~=���ƽ��O(nlogn) ԭ������n/2Ϊ���飬ÿ�ζ���Ա���в�������
+	 * 希尔排序：最好~=最坏，平均O(nlogn) 原理：以n/2为分组，每次对组员进行插入排序
 	 */
 	public static void shellSort(int a[]) {
 		int n = a.length;
 		int j, gap;
 		for (gap = n / 2; gap > 0; gap /= 2)
-			for (j = gap; j < n; j++)// �������gap��Ԫ�ؿ�ʼ
-				if (a[j] < a[j - gap])// ÿ��Ԫ�����Լ����ڵ����ݽ���ֱ�Ӳ�������
+			for (j = gap; j < n; j++)// 从数组第gap个元素开始
+				if (a[j] < a[j - gap])// 每个元素与自己组内的数据进行直接插入排序
 				{
 					int temp = a[j];
 					int k = j - gap;

@@ -14,3 +14,10 @@
 /pom.xml.versionsBackup
 */bin/*
 /bin/
+*/.idea/*
+/.idea/
+*/.metadata/*
+/.metadata
+*/out/*
+/out/
+/LeetCode.iml

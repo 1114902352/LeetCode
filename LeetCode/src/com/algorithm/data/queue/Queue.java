@@ -3,9 +3,9 @@ package com.algorithm.data.queue;
 import java.util.Stack;
 
 /**
- * ÓÃÒ»¸öÕ»½á¹¹ÊµÏÖÒ»¸ö¶ÓÁĞ
- * Ô­Àí£ºÊ¹ÓÃÁ½¸ö¶ÓÁĞ»¥Ïàµ¹»»Êı¾İ
- * pushÊ±£¬Ö»½øÈëstack1,popÊ±£¬´Óstack2ÍË;µ±stack2ÎŞÖµÊ±£¬½«stack1µÄÖµÍË¸østack2.
+ * ç”¨ä¸€ä¸ªæ ˆç»“æ„å®ç°ä¸€ä¸ªé˜Ÿåˆ—
+ * åŸç†ï¼šä½¿ç”¨ä¸¤ä¸ªé˜Ÿåˆ—äº’ç›¸å€’æ¢æ•°æ®
+ * pushæ—¶ï¼Œåªè¿›å…¥stack1,popæ—¶ï¼Œä»stack2é€€;å½“stack2æ— å€¼æ—¶ï¼Œå°†stack1çš„å€¼é€€ç»™stack2.
  */
 public class Queue {
 	Stack<Integer> stack1 = new Stack<Integer>();

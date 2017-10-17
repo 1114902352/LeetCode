@@ -3,28 +3,28 @@ package com.design.pattern.decorator;
 public class Client {
 
 	public static void main(String[] args) {
-		// ´´½¨¹¹¼þ¶ÔÏó ÌÀ¸ß ->ËûÊÇÒ»¸ö¾ßÌåµÄ³ÌÐòÔ±
-		// µ«ÊÇÏÖÔÚËûÖ»ÓÐ±à³ÌÄÜÁ¦ ÄÇÔõÃ´ÐÐ
-		// ±ØÐë¸³ÓèËû¸ü´óµÄÄÜÁ¦ ²»È»ÔõÃ´×¬´óÇ®!
-		// ËùÒÔ ÉÏµÛ¸øËû×°ÊÎÁËÒ»·¬ Ë²¼äÌáÉñÁËËûµÄB¸ñ
+		// åˆ›å»ºæž„ä»¶å¯¹è±¡ æ±¤é«˜ ->ä»–æ˜¯ä¸€ä¸ªå…·ä½“çš„ç¨‹åºå‘˜
+		// ä½†æ˜¯çŽ°åœ¨ä»–åªæœ‰ç¼–ç¨‹èƒ½åŠ› é‚£æ€Žä¹ˆè¡Œ
+		// å¿…é¡»èµ‹äºˆä»–æ›´å¤§çš„èƒ½åŠ› ä¸ç„¶æ€Žä¹ˆèµšå¤§é’±!
+		// æ‰€ä»¥ ä¸Šå¸ç»™ä»–è£…é¥°äº†ä¸€ç•ª çž¬é—´æç¥žäº†ä»–çš„Bæ ¼
 		Programmer programmer = new Tom();
 
-		// ×°ÊÎÀàµÇ³¡ ŒÅË¿ ÎÒÀ´×°ÊÎÄã ÈÃÄã¾ßÓÐ¸ü´óµÄÄÜÁ¦
+		// è£…é¥°ç±»ç™»åœº å±Œä¸ æˆ‘æ¥è£…é¥°ä½  è®©ä½ å…·æœ‰æ›´å¤§çš„èƒ½åŠ›
 		Decorator hacker = new Hacker(programmer);
-		// ÕâÏÂÌÀ¸ßÕâ¸öŒÅË¿³ÌÐòÔ±¾Í¾ßÓÐºÚ¿ÍµÄ¼¼ÄÜ°üÁË
-		// ÕâÏÂ¾ÍÃ»ÓÐË­¸Ò½ÐËûŒÅË¿ÁË°É ¹þ¹þ ²»È»·Ö·ÖÖÓÈÃÄãµçÄÔ±ÀÀ£
-		System.out.println("µÚÒ»´Î×°ÊÎ");
+		// è¿™ä¸‹æ±¤é«˜è¿™ä¸ªå±Œä¸ç¨‹åºå‘˜å°±å…·æœ‰é»‘å®¢çš„æŠ€èƒ½åŒ…äº†
+		// è¿™ä¸‹å°±æ²¡æœ‰è°æ•¢å«ä»–å±Œä¸äº†å§ å“ˆå“ˆ ä¸ç„¶åˆ†åˆ†é’Ÿè®©ä½ ç”µè„‘å´©æºƒ
+		System.out.println("ç¬¬ä¸€æ¬¡è£…é¥°");
 		hacker.programme();
 
-		// ³ÌÐòÔ±»¹²»Âú×ã Ëû»¹Òª¸ü¶àµÄ¼¼ÄÜ ÒòÎªËûÒªÄæÏ®
-		// ËùÒÔÉÏµÛÔÙ¸øËû×°ÊÎÁËÒ»ÏÂ
-		// ÔÚËû¾ßÓÐºÚ¿Í¼¼ÄÜµÄ»ù´¡ÉÏÁíÍâ¸³ÓèÁËËû¼Ü¹¹Ê¦µÄ¹¦ÄÜ
-		System.out.println("--------------µÚ¶þ´Î×°ÊÎ");
+		// ç¨‹åºå‘˜è¿˜ä¸æ»¡è¶³ ä»–è¿˜è¦æ›´å¤šçš„æŠ€èƒ½ å› ä¸ºä»–è¦é€†è¢­
+		// æ‰€ä»¥ä¸Šå¸å†ç»™ä»–è£…é¥°äº†ä¸€ä¸‹
+		// åœ¨ä»–å…·æœ‰é»‘å®¢æŠ€èƒ½çš„åŸºç¡€ä¸Šå¦å¤–èµ‹äºˆäº†ä»–æž¶æž„å¸ˆçš„åŠŸèƒ½
+		System.out.println("--------------ç¬¬äºŒæ¬¡è£…é¥°");
 		Decorator achitect = new SoftwareArchitect(hacker);
 
 		achitect.programme();
-		// Ò²¿ÉÒÔÒ»²½×°ÊÎÁ½¸ö¼¼ÄÜ ÒòÎªËûÃÇÓÐ¹²Í¬µÄ¸¸Àà³éÏó¹¹¼þ½Ó¿Ú Programmer
-		System.out.println("------------Ò»²½×°ÊÎÁ½¸ö¼¼ÄÜ");
+		// ä¹Ÿå¯ä»¥ä¸€æ­¥è£…é¥°ä¸¤ä¸ªæŠ€èƒ½ å› ä¸ºä»–ä»¬æœ‰å…±åŒçš„çˆ¶ç±»æŠ½è±¡æž„ä»¶æŽ¥å£ Programmer
+		System.out.println("------------ä¸€æ­¥è£…é¥°ä¸¤ä¸ªæŠ€èƒ½");
 		Decorator achitect1 = new SoftwareArchitect(new Hacker(new Tom()));
 		achitect1.programme();
 	}

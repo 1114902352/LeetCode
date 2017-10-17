@@ -1,7 +1,7 @@
 package com.proxy;
 
 /**
- *	¾²Ì¬´úÀíÀà£¬Ã¿Ò»¸ö±»´úÀí¶ÔÏó¶¼ÐèÒªÒ»¸öProxy¶ÔÏóÀ´½øÐÐ´úÀí 
+ *	é™æ€ä»£ç†ç±»ï¼Œæ¯ä¸€ä¸ªè¢«ä»£ç†å¯¹è±¡éƒ½éœ€è¦ä¸€ä¸ªProxyå¯¹è±¡æ¥è¿›è¡Œä»£ç† 
  */
 public class HelloStaticProxy implements Hello{
 

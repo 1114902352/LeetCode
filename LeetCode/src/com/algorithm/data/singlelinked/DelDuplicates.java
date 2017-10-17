@@ -3,8 +3,8 @@ package com.algorithm.data.singlelinked;
 public class DelDuplicates {
 
 	/**
-	 * ɾ�������ظ�Ԫ�أ� ԭ����ά������ָ�룬p1ָ���һ���ڵ㣬p2ָ��ڶ����ڵ㣬�ȶԷ�������ֵ��ͬ��ɾ����һ��Ԫ�أ�p1�Զ�ָ��ڶ���Ԫ�أ�
-	 * p2����ݽ�һ�����ֲ�ָ��ͳһԪ�أ�
+	 * 删除链表重复元素， 原理：维持两个指针，p1指向第一个节点，p2指向第二个节点，比对发现两个值相同，删除第一个元素，p1自动指向第二个元素，
+	 * p2必须递进一步保持不指向统一元素，
 	 * 
 	 * @param head
 	 * @return

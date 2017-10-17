@@ -1,7 +1,7 @@
 package com.design.pattern.decorator;
 
 /**
- * ¾ßÌå×°ÊÎ½ÇÉ« ºÚ¿ÍÀà Ëû¾ßÓĞ¸½¼ÓµÄ¹¦ÄÜ ËûÄÜÈëÇÖ±ğÈËµÄµçÄÔ
+ * å…·ä½“è£…é¥°è§’è‰² é»‘å®¢ç±» ä»–å…·æœ‰é™„åŠ çš„åŠŸèƒ½ ä»–èƒ½å…¥ä¾µåˆ«äººçš„ç”µè„‘
  * 
  * @author Administrator
  *
@@ -15,8 +15,8 @@ public class Hacker extends Decorator {
 	@Override
 	public void programme() {
 		super.programme();
-		// ¸½¼ÓµÄÔğÈÎ»òÕß¹¦ÄÜ
-		System.out.println("ÎÒ¾ßÓĞºÚ¿ÍµÄ¼¼ÄÜ   ÎÒÄÜÈëÇÖ±ğÈËµÄµçÄÔ");
+		// é™„åŠ çš„è´£ä»»æˆ–è€…åŠŸèƒ½
+		System.out.println("æˆ‘å…·æœ‰é»‘å®¢çš„æŠ€èƒ½   æˆ‘èƒ½å…¥ä¾µåˆ«äººçš„ç”µè„‘");
 	}
 
 }

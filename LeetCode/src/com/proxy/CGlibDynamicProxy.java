@@ -7,8 +7,8 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- *	CGLib¶¯Ì¬´úÀí£ºÒıÈëÁ½¸ö°üasm,cglib£¬Çë×¢ÒâhibernateºÍspringÖĞ¶¼ÊÇÓÃcglib¶¯Ì¬´úÀí£¬ÕâÁ½¸öºÜÓĞ¿ÉÄÜÔì³É°ü³åÍ»
- *	CGLibÌá¹©¸øÎÒÃÇ·½·¨¼¶±ğµÄ´úÀí£¬Ò²¿ÉÒÔÀí½âÎª¶Ô·½·¨µÄÀ¹½Ø£¬¶øÇÒ´ËÊ±±»´úÀíÀàÒÑ¾­²»ĞèÒªÔÙÊµÏÖÒ»¸ö½Ó¿Ú¡£
+ *	CGLibåŠ¨æ€ä»£ç†ï¼šå¼•å…¥ä¸¤ä¸ªåŒ…asm,cglibï¼Œè¯·æ³¨æ„hibernateå’Œspringä¸­éƒ½æ˜¯ç”¨cglibåŠ¨æ€ä»£ç†ï¼Œè¿™ä¸¤ä¸ªå¾ˆæœ‰å¯èƒ½é€ æˆåŒ…å†²çª
+ *	CGLibæä¾›ç»™æˆ‘ä»¬æ–¹æ³•çº§åˆ«çš„ä»£ç†ï¼Œä¹Ÿå¯ä»¥ç†è§£ä¸ºå¯¹æ–¹æ³•çš„æ‹¦æˆªï¼Œè€Œä¸”æ­¤æ—¶è¢«ä»£ç†ç±»å·²ç»ä¸éœ€è¦å†å®ç°ä¸€ä¸ªæ¥å£ã€‚
  */
 public class CGlibDynamicProxy implements MethodInterceptor{
 
@@ -17,7 +17,7 @@ public class CGlibDynamicProxy implements MethodInterceptor{
 	private CGlibDynamicProxy() {}
 	
 	/**
-	 *	µ¥ÀıÄ£Ê½Ìá¹©´úÀí 
+	 *	å•ä¾‹æ¨¡å¼æä¾›ä»£ç† 
 	 */
 	public static CGlibDynamicProxy getInstance(){
 		return instance;

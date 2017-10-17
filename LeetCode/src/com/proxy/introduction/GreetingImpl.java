@@ -2,7 +2,7 @@ package com.proxy.introduction;
 
 import org.springframework.stereotype.Component;
 /**
- *	该类只是实现了Greeting接口，而spring的引入增强可以在该类的字节码阶段再多实现一个Apology接口 
+ *	璇ョ被鍙槸瀹炵幇浜咷reeting鎺ュ彛锛岃�宻pring鐨勫紩鍏ュ寮哄彲浠ュ湪璇ョ被鐨勫瓧鑺傜爜闃舵鍐嶅瀹炵幇涓�涓狝pology鎺ュ彛 
  */
 @Component
 public class GreetingImpl implements Greeting{

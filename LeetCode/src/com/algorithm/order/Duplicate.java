@@ -6,7 +6,7 @@ import java.util.Set;
 public class Duplicate {
 	
 	/**
-	 * 网上的做法，已经导包了！
+	 * 缃戜笂鐨勫仛娉曪紝宸茬粡瀵煎寘浜嗭紒
 	 * @param nums
 	 * @return
 	 */
@@ -20,7 +20,7 @@ public class Duplicate {
     }
 	
 	/**
-	 * 时间复杂度太高，不符合leetcode标准
+	 * 鏃堕棿澶嶆潅搴﹀お楂橈紝涓嶇鍚坙eetcode鏍囧噯
 	 * @param nums
 	 * @return
 	 */

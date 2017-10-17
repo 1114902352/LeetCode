@@ -1,12 +1,12 @@
 package com.design.pattern.decorator;
 
 /**
- * ³éÏó¹¹¼ş½ÇÉ« ³ÌĞòÔ±½Ó¿Ú ³ÌĞòÔ±¾ßÓĞ±à³ÌµÄÄÜÁ¦
+ * æŠ½è±¡æ„ä»¶è§’è‰² ç¨‹åºå‘˜æ¥å£ ç¨‹åºå‘˜å…·æœ‰ç¼–ç¨‹çš„èƒ½åŠ›
  * 
  * @author Administrator
  *
  */
 public interface Programmer {
-	// ±à³Ì
+	// ç¼–ç¨‹
 	public void programme();
 }

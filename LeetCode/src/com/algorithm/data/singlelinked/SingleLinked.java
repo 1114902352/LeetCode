@@ -1,7 +1,7 @@
 package com.algorithm.data.singlelinked;
 
 /**
- * µ¥Á´±í 
+ * å•é“¾è¡¨ 
  */
 public class SingleLinked {
 	public int val;
@@ -12,8 +12,8 @@ public class SingleLinked {
 	}
 
 	/**
-	 * µ¥Á´±í±éÀú
-	 * @param node Í·½áµã
+	 * å•é“¾è¡¨éå†
+	 * @param node å¤´ç»“ç‚¹
 	 */
 	public static void scanNode(SingleLinked node){
 		System.out.print(node.val+"-->");
@@ -24,8 +24,8 @@ public class SingleLinked {
 	}
 	
 	/**
-	 * µ¥Á´±íÉ¾³ı×Ó½Úµã 
-	 * @param node ĞèÒªÉ¾³ıµÄ½áµã
+	 * å•é“¾è¡¨åˆ é™¤å­èŠ‚ç‚¹ 
+	 * @param node éœ€è¦åˆ é™¤çš„ç»“ç‚¹
 	 */
 	public static void deleteNode(SingleLinked node) {
 		 if(node.next==null){
@@ -36,10 +36,10 @@ public class SingleLinked {
 	 }
 	
 	/**
-	 * Å¤×ªµ¥ÏòÁ´±í:
-	 * Ô­Àí£ºÉùÃ÷Èı¸ö±äÁ¿cur,pre,suf,½«µ±Ç°½Úµã£¬Ç°½Úµã£¬ºó½Úµã±¸·İÆğÀ´£¬ÔÙ½«µ±Ç°½ÚµãÖ¸ÏòÇ°Ò»¸ö½Úµã£¬½øĞĞµİ½ø£¬×¢Òâ±¸·İµÄË³Ğò£¬
+	 * æ‰­è½¬å•å‘é“¾è¡¨:
+	 * åŸç†ï¼šå£°æ˜ä¸‰ä¸ªå˜é‡cur,pre,suf,å°†å½“å‰èŠ‚ç‚¹ï¼Œå‰èŠ‚ç‚¹ï¼ŒåèŠ‚ç‚¹å¤‡ä»½èµ·æ¥ï¼Œå†å°†å½“å‰èŠ‚ç‚¹æŒ‡å‘å‰ä¸€ä¸ªèŠ‚ç‚¹ï¼Œè¿›è¡Œé€’è¿›ï¼Œæ³¨æ„å¤‡ä»½çš„é¡ºåºï¼Œ
 	 * @param head
-	 * @return ·´×ªºóµÄÍ·½Úµã
+	 * @return åè½¬åçš„å¤´èŠ‚ç‚¹
 	 */
 	public static SingleLinked reverseList(SingleLinked head){
 		SingleLinked cur = head;
@@ -55,7 +55,7 @@ public class SingleLinked {
 	}
 	
 	/**
-	 * Ñ°ÕÒ×îºóÒ»¸ö½Úµã
+	 * å¯»æ‰¾æœ€åä¸€ä¸ªèŠ‚ç‚¹
 	 * @param head
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class SingleLinked {
 	}
 	
 	/**
-	 * ºÏ²¢Á½¸öÓĞĞòÁ´±í£¬Ê¹ĞÂÁ´±í
+	 * åˆå¹¶ä¸¤ä¸ªæœ‰åºé“¾è¡¨ï¼Œä½¿æ–°é“¾è¡¨
 	 * @return
 	 */
 	public static SingleLinked mergeTwoLists(SingleLinked l1, SingleLinked l2){
@@ -88,7 +88,7 @@ public class SingleLinked {
 	}
 	
 	/**
-	 * Á´±íÅÅĞò
+	 * é“¾è¡¨æ’åº
 	 * @param list
 	 */
 	public static void sortLinkList(SingleLinked list){
@@ -129,7 +129,7 @@ public class SingleLinked {
 //		s2.next = s3;
 //		s3.next = s4;
 //		deleteNode(s2);
-//		System.out.println("Á´±í×îºóÒ»¸ö½ÚµãµÄÖµÎª£º"+getLastOne(s1).val);
+//		System.out.println("é“¾è¡¨æœ€åä¸€ä¸ªèŠ‚ç‚¹çš„å€¼ä¸ºï¼š"+getLastOne(s1).val);
 //		SingleLinked head = reverseList(s1);
 //		scanNode(head);
 //	}

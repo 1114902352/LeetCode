@@ -1,7 +1,7 @@
 package com.design.pattern.decorator;
 
 /**
- * ×°ÊÎ½ÇÉ«
+ * è£…é¥°è§’è‰²
  * 
  * @author Administrator
  *
@@ -16,6 +16,6 @@ public class Decorator implements Programmer {
 	@Override
 	public void programme() {
 		programmer.programme();
-		// ¸½¼ÓµÄÔğÈÎ»òÕß¹¦ÄÜ
+		// é™„åŠ çš„è´£ä»»æˆ–è€…åŠŸèƒ½
 	}
 }

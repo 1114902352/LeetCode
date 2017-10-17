@@ -1,7 +1,7 @@
 package com.design.pattern.decorator;
 
 /**
- * ¾ßÌå¹¹¼ş½ÇÉ« ÌÀ¸ßÊÇÒ»¸ö¾ßÌåµÄ³ÌĞòÔ± ÄÇÃ´Ëû¾Í¾ßÓĞ±à³ÌÄÜÁ¦
+ * å…·ä½“æ„ä»¶è§’è‰² æ±¤é«˜æ˜¯ä¸€ä¸ªå…·ä½“çš„ç¨‹åºå‘˜ é‚£ä¹ˆä»–å°±å…·æœ‰ç¼–ç¨‹èƒ½åŠ›
  * 
  * @author Administrator
  *
@@ -10,7 +10,7 @@ public class Tom implements Programmer {
 
 	@Override
 	public void programme() {
-		System.out.println("ÎÒÊÇÒ»¸ö³ÌĞòÔ±, ÎÒÄÜ±à³Ì");
+		System.out.println("æˆ‘æ˜¯ä¸€ä¸ªç¨‹åºå‘˜, æˆ‘èƒ½ç¼–ç¨‹");
 	}
 
 }

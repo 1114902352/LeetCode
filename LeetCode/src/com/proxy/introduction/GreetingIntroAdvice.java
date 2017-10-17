@@ -5,8 +5,8 @@ import org.springframework.aop.support.DelegatingIntroductionInterceptor;
 import org.springframework.stereotype.Component;
 
 /**
- * GreetingÔöÇ¿Àà£¬ÓÃComponent×¢Èëµ½springÈİÆ÷ÖĞ
- * ¸ÃÀàÊµÏÖÁËApology½Ó¿Ú£¬²¢ÖØĞ´saySorry·½·¨£¬À´×÷ÎªÔöÇ¿·½·¨
+ * Greetingå¢å¼ºç±»ï¼Œç”¨Componentæ³¨å…¥åˆ°springå®¹å™¨ä¸­
+ * è¯¥ç±»å®ç°äº†Apologyæ¥å£ï¼Œå¹¶é‡å†™saySorryæ–¹æ³•ï¼Œæ¥ä½œä¸ºå¢å¼ºæ–¹æ³•
  */
 @Component
 public class GreetingIntroAdvice extends DelegatingIntroductionInterceptor implements Apology{

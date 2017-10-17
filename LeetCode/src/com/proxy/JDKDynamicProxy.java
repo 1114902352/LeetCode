@@ -5,9 +5,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * JDK¶¯Ì¬´úÀí :ÊµÏÖInvocationHandler½Ó¿Ú£¬²¢ÖØĞ´ invoke·½·¨
- * ÓÅµã:½Ó¿Ú¸Ä±ä£¬´úÀíÀà²»ĞèÒª¸ü¸Ä
- * È±µã:±»´úÀíÀà±ØĞëÓĞÒ»¸ö½Ó¿Ú
+ * JDKåŠ¨æ€ä»£ç† :å®ç°InvocationHandleræ¥å£ï¼Œå¹¶é‡å†™ invokeæ–¹æ³•
+ * ä¼˜ç‚¹:æ¥å£æ”¹å˜ï¼Œä»£ç†ç±»ä¸éœ€è¦æ›´æ”¹
+ * ç¼ºç‚¹:è¢«ä»£ç†ç±»å¿…é¡»æœ‰ä¸€ä¸ªæ¥å£
  */
 public class JDKDynamicProxy implements InvocationHandler{
 	
@@ -34,7 +34,7 @@ public class JDKDynamicProxy implements InvocationHandler{
 	}
 	
 	/**
-	 * <T>ÉùÃ÷ÊÇÒ»¸ö·ºĞÍ£¬T²ÅÊÇ¾ßÌåµÄÀàĞÍ 
+	 * <T>å£°æ˜æ˜¯ä¸€ä¸ªæ³›å‹ï¼ŒTæ‰æ˜¯å…·ä½“çš„ç±»å‹ 
 	 */
 	@SuppressWarnings("unchecked")
 	public <T> T getProxy(){

@@ -3,13 +3,13 @@ package com.algorithm.data.singlelinked;
 import com.algorithm.data.singlelinked.SingleLinked;
 
 /**
- *	Á´±íÆæÊıÅÄ×îÇ°£¬Å¼ÊıÅÅ×îºó 
+ *	é“¾è¡¨å¥‡æ•°æ‹æœ€å‰ï¼Œå¶æ•°æ’æœ€å 
  */
 public class OddEvenList {
 
 	/**
-	 * Ô­Àí:
-	 * ÖØĞÂ¹¹ÔìÁ½ÌõÁ´±í£¬±éÀúÔ­Á´±í£¬½«ĞòºÅ°´ÕÕÆæÅ¼·Ö±ğ·Åµ½Á½ÌõÁ´±íÖĞ£¬×¢ÒâÒª±£´æÁ´±íµÄÍ·Î²£¬×îºó²ÅÄÜ¹»Á¬½ÓÆğÀ´
+	 * åŸç†:
+	 * é‡æ–°æ„é€ ä¸¤æ¡é“¾è¡¨ï¼Œéå†åŸé“¾è¡¨ï¼Œå°†åºå·æŒ‰ç…§å¥‡å¶åˆ†åˆ«æ”¾åˆ°ä¸¤æ¡é“¾è¡¨ä¸­ï¼Œæ³¨æ„è¦ä¿å­˜é“¾è¡¨çš„å¤´å°¾ï¼Œæœ€åæ‰èƒ½å¤Ÿè¿æ¥èµ·æ¥
 	 * @param head
 	 * @return
 	 */
@@ -19,14 +19,14 @@ public class OddEvenList {
 		} else if (head.next == null) {
 			return head;
 		}
-		SingleLinked oddHead = null; // ÆæÊıÍ·
-		SingleLinked oddCur = null;//µ±Ç°ÆæÁ´±í½Úµã£¬×îºóÒ»¸öÑ­»·Ê±¼´ÎªÁ´±íµÄÎ²
-		SingleLinked evenHead = null;// Å¼ÊıÍ·
-		SingleLinked evenCur = null;//µ±Ç°Å¼Á´±í½Úµã£¬×îºóÒ»¸öÑ­»·Ê±¼´ÎªÁ´±íµÄÎ²
+		SingleLinked oddHead = null; // å¥‡æ•°å¤´
+		SingleLinked oddCur = null;//å½“å‰å¥‡é“¾è¡¨èŠ‚ç‚¹ï¼Œæœ€åä¸€ä¸ªå¾ªç¯æ—¶å³ä¸ºé“¾è¡¨çš„å°¾
+		SingleLinked evenHead = null;// å¶æ•°å¤´
+		SingleLinked evenCur = null;//å½“å‰å¶é“¾è¡¨èŠ‚ç‚¹ï¼Œæœ€åä¸€ä¸ªå¾ªç¯æ—¶å³ä¸ºé“¾è¡¨çš„å°¾
 		int nums = 0;
 		while (head != null) {
 			nums++;
-			if (nums % 2 == 0) {// Å¼ÊıĞòºÅ
+			if (nums % 2 == 0) {// å¶æ•°åºå·
 				if (evenCur != null) {
 					evenCur.next = new SingleLinked(head.val);
 					evenCur = evenCur.next;
@@ -34,7 +34,7 @@ public class OddEvenList {
 					evenHead = new SingleLinked(head.val);
 					evenCur = evenHead;
 				}
-			} else {// ÆæÊıĞòºÅ
+			} else {// å¥‡æ•°åºå·
 				if (oddCur != null) {
 					oddCur.next = new SingleLinked(head.val);
 					oddCur = oddCur.next;

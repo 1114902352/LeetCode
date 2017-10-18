@@ -9,7 +9,7 @@ import java.util.Queue;
 public class AdjacencyMatrixGraph {
 
 	/**
-	 * @return 以i元素为根节点，下属所有节点的数量
+	 * @return 浠鍏冪礌涓烘牴鑺傜偣锛屼笅灞炴墍鏈夎妭鐐圭殑鏁伴噺
 	 */
 	public static int longest_dfs(int[][] mat, int i, boolean[] visited) {
 		if (visited[i])

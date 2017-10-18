@@ -9,13 +9,13 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * 封装BFS算法
+ * 灏佽BFS绠楁硶
  */
 public class BroadFirstSearchAlgorithm implements Algorithm {
-	// 保存已经访问过的地点
+	// 淇濆瓨宸茬粡璁块棶杩囩殑鍦扮偣
 	private List<String> visitedVertex;
 	/**
-	 * Map<K,V>:K表示终点，V表示起点，使用map来保存将导致
+	 * Map<K,V>:K琛ㄧず缁堢偣锛孷琛ㄧず璧风偣锛屼娇鐢╩ap鏉ヤ繚瀛樺皢瀵艰嚧
 	 */
 	private Map<String, String> path;
 
@@ -38,9 +38,9 @@ public class BroadFirstSearchAlgorithm implements Algorithm {
 
 	private void BFS(Graph g, String sourceVertex) {
 		Queue<String> queue = new LinkedList<>();
-		// 标记起点
+		// 鏍囪璧风偣
 		visitedVertex.add(sourceVertex);
-		// 起点入列
+		// 璧风偣鍏ュ垪
 		queue.add(sourceVertex);
 
 		while (false == queue.isEmpty()) {

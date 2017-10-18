@@ -23,15 +23,15 @@ public class FriendCircle {
 		int n = M.length;
 		boolean[] visited = new boolean[n];
 		int count = 0;
-		// Èç¹ûdfs´óÓÚ0£¬ËµÃ÷ÓĞÎ´±éÀúµÄ½áµã
-		// Ö»ĞèÒª±éÀúËùÓĞ½áµã
+		// å¦‚æœdfså¤§äº0ï¼Œè¯´æ˜æœ‰æœªéå†çš„ç»“ç‚¹
+		// åªéœ€è¦éå†æ‰€æœ‰ç»“ç‚¹
 		for (int i = 0; i < n; i++)
 			if (dfs(M, i, visited) > 0)
 				count++;
 		return count;
 	}
 	
-	// ·µ»ØÖµ´ú±íiÔªËØÏÂ×îÉîÂ·¾¶½ÚµãµÄ¸öÊı
+	// è¿”å›å€¼ä»£è¡¨iå…ƒç´ ä¸‹æœ€æ·±è·¯å¾„èŠ‚ç‚¹çš„ä¸ªæ•°
 	public int dfs(int[][] mat, int i, boolean[] visited) {
 		if (visited[i])
 			return 0;

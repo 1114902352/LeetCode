@@ -7,16 +7,16 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * (ÎŞÏò)Í¼
+ * (æ— å‘)å›¾
  */
 public class Graph {
-	// Í¼µÄÆğµã
+	// å›¾çš„èµ·ç‚¹
 	private String firstVertax;
 
-	// ÁÚ½Ó±í
+	// é‚»æ¥è¡¨
 	private Map<String, List<String>> adj = new HashMap<>();
 
-	// ±éÀúËã·¨
+	// éå†ç®—æ³•
 	private Algorithm algorithm;
 
 	public Graph(Algorithm algorithm) {
@@ -24,14 +24,14 @@ public class Graph {
 	}
 
 	/**
-	 * Ö´ĞĞËã·¨
+	 * æ‰§è¡Œç®—æ³•
 	 */
 	public void done() {
 		algorithm.perform(this, firstVertax);
 	}
 
 	/**
-	 * µÃµ½´ÓÆğµãµ½{@code vertex}µãµÄ×î¶ÌÂ·¾¶
+	 * å¾—åˆ°ä»èµ·ç‚¹åˆ°{@code vertex}ç‚¹çš„æœ€çŸ­è·¯å¾„
 	 * 
 	 * @param vertex
 	 * @return
@@ -50,7 +50,7 @@ public class Graph {
 	}
 
 	/**
-	 * Ìí¼ÓÒ»Ìõ±ß
+	 * æ·»åŠ ä¸€æ¡è¾¹
 	 */
 	public void addEdge(String fromVertex, String toVertex) {
 		if (firstVertax == null) {
@@ -62,7 +62,7 @@ public class Graph {
 	}
 
 	/**
-	 * Ìí¼ÓÒ»¸ö¶¥µã
+	 * æ·»åŠ ä¸€ä¸ªé¡¶ç‚¹
 	 */
 	public void addVertex(String vertex) {
 		adj.put(vertex, new ArrayList<String>());

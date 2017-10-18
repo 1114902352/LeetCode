@@ -4,12 +4,12 @@ import java.util.Map;
 
 public interface Algorithm {
     /**
-     * 执行算法
+     * 鎵ц绠楁硶
      */
     void perform(Graph g, String sourceVertex);
 
     /**
-     * 得到路径
+     * 寰楀埌璺緞
      */
     Map<String, String> getPath();
 }

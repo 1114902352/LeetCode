@@ -1,6 +1,9 @@
 package com.algorithm.data.BinaryTree;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.util.List;
+import java.util.Stack;
 
 //		A
 //	   / \
@@ -23,10 +26,18 @@ public class TreeNode {
 		val = x;
 	}
 
+	public int getVal() {
+		return val;
+	}
+
+	public void setVal(int val) {
+		this.val = val;
+	}
+
 	/**
 	 * 求最大深度 原理： 每层去找左右子节点的深度，直到当前节点为空时返回0
 	 * 
-	 * @param 当前节点
+	 * @param root 当前节点
 	 * @return 当前节点的深度
 	 */
 	public static int maxDepth(TreeNode root) {
@@ -41,7 +52,7 @@ public class TreeNode {
 	/**
 	 * 求最小深度 原理:同上
 	 * 
-	 * @param 当前节点
+	 * @param root 当前节点
 	 * @return 当前节点的深度
 	 */
 	public static int minDepth(TreeNode root) {
@@ -56,8 +67,8 @@ public class TreeNode {
 	/**
 	 * 二叉树遍历
 	 * 
-	 * @param 当前节点
-	 * @param 排序规则的标识
+	 * @param root 当前节点
+	 * @param flag 排序规则的标识
 	 * @return
 	 */
 	public static String scanNodes(TreeNode root, String flag) {
@@ -122,76 +133,64 @@ public class TreeNode {
 	}
 
 	/**
-	 * 二叉搜索树的最小祖先： 二叉查找树或者是一棵空树，或者是具有下列性质的二叉树：
-	 * （1）若左子树不空，则左子树上所有结点的值均小于它的根结点的值；（2）若右子树不空，则右子树上所有结点的值均大于或等于它的根结点的值；
-	 * （3）左、右子树也分别为二叉查找树； （4）没有键值相等的节点。 根据二叉树性质来查找
-	 * 
+	 * 普通树 查找最小祖先方法
 	 * @param root
 	 * @param p
 	 * @param q
 	 * @return
 	 */
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (root == null || p == null || q == null)
-			return null;
-		if (Math.max(p.val, q.val) < root.val) {
-			return lowestCommonAncestor(root.left, p, q);
-		} else if (Math.min(p.val, q.val) > root.val) {
-			return lowestCommonAncestor(root.right, p, q);
-		} else
-			return root;
+		Stack<TreeNode> stackp = new Stack<TreeNode>();
+		Stack<TreeNode> stackq = new Stack<TreeNode>();
+		getPath(root, p, stackp);
+		getPath(root, q, stackq);
+		System.out.println(JSONObject.toJSONString(stackp));
+		System.out.println(JSONObject.toJSONString(stackq));
+		return lowestCommonAncestor(stackp, stackq);
 	}
 
 	/**
-	 * 查找最小共同祖先方法2
-	 * 
-	 * @param root
-	 * @param p
-	 * @param q
+	 * 比较两个节点的路线,寻找最小的共同祖先(最小为靠近底层叶节点的祖先)
+	 * @param stackp
+	 * @param stackq
 	 * @return
 	 */
-	public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {
-		// 发现目标节点则通过返回值标记该子树发现了某个目标结点
-		if (root == null || root == p || root == q)
-			return root;
-		// 查看左子树中是否有目标结点，没有为null
-		TreeNode left = lowestCommonAncestor(root.left, p, q);
-		// 查看右子树是否有目标节点，没有为null
-		TreeNode right = lowestCommonAncestor(root.right, p, q);
-		// 都不为空，说明做右子树都有目标结点，则公共祖先就是本身
-		if (left != null && right != null)
-			return root;
-		// 如果发现了目标节点，则继续向上标记为该目标节点
-		return left == null ? right : left;
+	private static TreeNode lowestCommonAncestor(Stack<TreeNode> stackp, Stack<TreeNode> stackq) {
+		TreeNode target = null;
+		// 从根节点(栈后进先出)开始往前遍历，每一次pop() 即往下走一个层级
+		// 遍历到某一层级的下个路劲不再相等或其中任意一个stack为空了，则最小层级即为该层级
+		while (!stackp.isEmpty() && !stackq.isEmpty() && stackp.peek().val == stackq.peek().val) {
+			target = stackp.peek();
+			stackp.pop();
+			stackq.pop();
+		}
+		return target;
 	}
 
 	/**
 	 * 找到指定目标在树中的路径 原理：
 	 * 每层方法去寻找子节点下是否有目标节点，没有下层方法返回false，有返回true，本层方法按照返回的结果判断是否本层节点为目标的路径，
-	 * 是就添加到list中
-	 * 
+	 * 是就添加到stack中
 	 * @param root
-	 * @param target
-	 * @param list
+	 * @param p
+	 * @param stackp
 	 * @return
 	 */
-	public static boolean getPaths(TreeNode root, TreeNode target, List<TreeNode> list) {
-		if (root == null) {
+	private static boolean getPath(TreeNode root, TreeNode p, Stack<TreeNode> stackp) {
+		if (root == null)
 			return false;
-		}
-		if (root == target) {
-			list.add(root);
-			return true;
-		}
-		boolean leftBoolean = getPaths(root.left, target, list);
-		boolean rightBoolean = getPaths(root.right, target, list);
-		if (leftBoolean || rightBoolean) {
-			list.add(root);
+		if (root.val == p.val) {
+			stackp.push(root);
 			return true;
 		} else {
-			return false;
+			if (getPath(root.left, p, stackp) || getPath(root.right, p, stackp)) {
+				stackp.push(root);
+				return true;
+			}
 		}
+		return false;
 	}
+
 
 	/**
 	 * 判断是否是深度平衡树： 每层去寻找左右节点的最大深度，判断是否左右节点深度的绝对值大于1，是则返回false;

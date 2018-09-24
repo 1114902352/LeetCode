@@ -1,4 +1,4 @@
-package com.algorithm.data.BinaryTree;
+package com.algorithm.data.topK;
 
 public class MinHeap
 {
@@ -12,7 +12,7 @@ public class MinHeap
         buildHeap();
     }
 
-    // 将数组转换成最小堆
+    // 将数组转换成最小堆，从最后一个有孩子节点的index向0遍历
     private void buildHeap()
     {
         // 完全二叉树只有数组下标小于或等于 (data.length) / 2 - 1 的元素有孩子结点，遍历这些结点。
@@ -24,6 +24,9 @@ public class MinHeap
         }
     }
 
+    /**
+     * @param i 有孩子的节点索引
+     */
     private void heapify(int i)
     {
         // 获取左右结点的数组下标
@@ -49,6 +52,7 @@ public class MinHeap
         swap(i, smallest);
 
         // 由于替换后左右子树会被影响，所以要对受影响的子树再进行heapify
+        // 跟与smallesst替换后，需要注意smallest下的子节点必须重新heapify
         heapify(smallest);
     }
 

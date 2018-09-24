@@ -1,11 +1,11 @@
-package com.algorithm.data.BinaryTree;
+package com.algorithm.data.topK;
 
 public class TopK
 {
     public static void main(String[] args)
     {
         // 源数据
-        int[] data = {56,275,12,6,45,478,41,1236,456,12,546,45};
+        int[] data = {5,5,46,3,4,54,90,3,2,1,3,3,20,21,25};
 
         // 获取Top5
         int[] top5 = topK(data, 5);

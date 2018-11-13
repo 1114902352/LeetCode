@@ -60,6 +60,37 @@ public class ClassicalOrder {
 	}
 
 	/**
+	 * 快速排序
+	 *
+	 */
+	public static void quickSort_recursive(int[] array,int first,int last){
+		//递归终止：左边界和右边界相逢时，即子序列只有一个元素结束
+		if(first >= last){
+			return;
+		}
+		int i = first;
+		int j = last;
+		int standard = array[first];// 声明基准值,一般是数组第一个元素，第一次挖坑i
+		while(i < j){// 循环1
+			// 从后往前找"大于"基准值的下标
+			// 此处 standard <= array[j] 必须有等于，如果没有"="，j就会卡在与基准值相等的坐标上，造成死循环
+			// i < j 也不可省略，可能会出现i与j重合的情况
+			while(i < j && standard <= array[j]){// 循环2
+				j--;
+			}
+			array[i] = array[j];// 填坑，第二次挖坑j
+			// 此处 array[i] <= standard "="是非必须的，循环2和循环3，只要有一个有"="就不会卡死，建议是两个都有，相等的值是不用替换的
+			while(i < j && array[i] <= standard){// 循环3
+				i++;
+			}
+			array[j] = array[i];// 填坑，第三次挖坑i
+		}
+		array[i] = standard;// 最后在i上 填坑
+		quickSort_recursive(array,first,i-1);// 分治思想，左边全是小于基准的元素，递归排序左边
+		quickSort_recursive(array,i+1,last);// 分治思想，右边全是大于基准的元素，递归排序右边
+	}
+
+	/**
 	 * 希尔排序
 	 */
 	public static void shellSort(int[] arr){

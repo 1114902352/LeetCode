@@ -1,31 +1,17 @@
 package com.algorithm.data.BinaryTree;
 
+/**
+ * 给予一个0或者1值的二叉树，要求修剪值全是0的子树，叶子节点为0也被当成全是0的子树
+ */
 public class PruningBinaryTree {
 
     public TreeNode pruneTree(TreeNode root) {
-        invoke(root);
+        if (root == null) return null;
+        root.left = pruneTree(root.left);
+        root.right = pruneTree(root.right);
+        if (root.left == null && root.right == null && root.val == 0){
+            root = null;
+        }
         return root;
-    }
-
-    public int invoke(TreeNode root){
-        if(root == null){
-            return 0;
-        }
-        int left = invoke(root.left);
-        if(left == 0){
-            root.left = null;
-        }
-        int right = invoke(root.right);
-        if(right == 0){
-            root.right = null;
-        }
-        return left + right +root.val;
-    }
-
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
     }
 }

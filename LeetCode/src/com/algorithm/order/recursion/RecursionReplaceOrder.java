@@ -9,7 +9,7 @@ public class RecursionReplaceOrder {
 	 * 递归算法，要注意参数穿什么，返回值返回什么，每层方法里面需要做些什么事，何时结束
 	 * 原理:
 	 * 每层方法内取出最后一位值，然后把剩余值传给下一层，直到剩余值为个位时返回给上层，上层将自己取到的最后一位值与下层拼接并返回
-	 * @param 每层取出最后一位的剩余值
+	 * @param number 每层取出最后一位的剩余值
 	 * @return 本层最后一位与下层返回值的拼接，最后一层直接返回当前值.
 	 */
 	public static int permutation(int number) {

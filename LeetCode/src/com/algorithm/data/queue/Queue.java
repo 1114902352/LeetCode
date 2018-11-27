@@ -4,7 +4,7 @@ import java.util.Stack;
 
 /**
  * 用一个栈结构实现一个队列
- * 原理：使用两个队列互相倒换数据
+ * 原理：使用两个栈互相倒换数据
  * push时，只进入stack1,pop时，从stack2退;当stack2无值时，将stack1的值退给stack2.
  */
 public class Queue {

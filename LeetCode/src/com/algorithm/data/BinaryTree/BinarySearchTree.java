@@ -1,14 +1,5 @@
 package com.algorithm.data.BinaryTree;
 
-import com.alibaba.fastjson.JSONObject;
-import org.springframework.util.CollectionUtils;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-
 /**
  * 二叉查找树或者是一棵空树，或者是具有下列性质的二叉树：
  * （1）若左子树不空，则左子树上所有结点的值均小于它的根结点的值；
@@ -17,6 +8,36 @@ import java.util.Stack;
  * （4）没有键值相等的节点
  */
 public class BinarySearchTree {
+
+    /**
+     * 二叉搜索树的最小祖先，共同祖先大于其中一个目标节点且小于另外一个目标节点
+     * @param root 根节点
+     * @param p 目标节点1
+     * @param q 目标节点2
+     * @return 最小共同祖先
+     */
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // 入参检查
+        if(p == null || q == null){
+           return null;
+        }
+        // 遍历到空叶子节点仍然没有找到，即返回null
+        if (root == null){
+            return null;
+        }
+        if ((root.val >= p.val && root.val <= q.val) || (root.val >= q.val && root.val <= p.val)) {
+            // 找到符合条件值并将其返回
+            return root;
+        } else if (root.val > p.val && root.val > q.val) {
+            // 当前值大于p和q的值，说明祖先在左子树上
+            return lowestCommonAncestor(root.left, p, q);
+        } else if (root.val < p.val && root.val < q.val) {
+            // 当前值小于p和去的值，说明祖先在右子树上
+            return lowestCommonAncestor(root.right, p, q);
+        } else {
+            return null;
+        }
+    }
 
     public static TreeNode addNode(TreeNode root,int key){
         TreeNode target = new TreeNode(key);
@@ -76,7 +97,6 @@ public class BinarySearchTree {
     }
 
     private TreeNode getDirectPostNode(TreeNode delNode) {//方法作用为得到待删除节点的直接后继节点
-
         TreeNode parentNode = delNode;//用来保存待删除节点的直接后继节点的父亲节点
         TreeNode direcrPostNode = delNode;//用来保存待删除节点的直接后继节点
         TreeNode currentNode = delNode.right;
@@ -108,82 +128,6 @@ public class BinarySearchTree {
     }
 
     /**
-     * 无递归遍历
-     */
-    public static List<Integer> traversalWithoutRecursive(TreeNode root,String flag) {
-        List<Integer> ret = new ArrayList<Integer>();
-        if(root == null){
-            return ret;
-        }
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p = root;
-        while(!stack.empty() || p != null){
-            if(p!=null){
-                stack.push(p);
-                if(flag.equals("先序")){
-                    ret.add(p.val);
-                }
-                p = p.left;
-            }else{
-                p = stack.pop();
-                if(flag.equals("中序")){
-                    ret.add(p.val);
-                }
-                p = p.right;
-            }
-        }
-        return ret;
-    }
-
-    /**
-     * 后序访问
-     */
-    public static List<Integer> postOrder(TreeNode root){
-        List<Integer> alist = new ArrayList<>();
-        Stack<TreeNode> stack = new Stack<TreeNode>();
-        if(root == null)
-            return alist;
-        TreeNode cur,pre = null;
-        stack.push(root);
-        while(!stack.empty()){
-            cur = stack.peek();
-            if((cur.left == null && cur.right == null) || (pre != null && (cur.left == pre || cur.right == pre))){
-                TreeNode temp = stack.pop();
-                alist.add(temp.val);
-                pre = temp;
-            }
-            else{
-                if(cur.right != null)
-                    stack.push(cur.right);
-                if(cur.left != null)
-                    stack.push(cur.left);
-            }
-        }
-        return alist;
-    }
-
-    /**
-     * 二叉搜索树的最小祖先
-     * @param root
-     * @param p
-     * @param q
-     * @return
-     */
-    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        if (root == null || p == null || q == null)
-            return null;
-        if ((root.val >= p.val && root.val <= q.val) || (root.val >= q.val && root.val <= p.val)) {
-            return root;
-        } else if (root.val > p.val && root.val > q.val) {
-            return lowestCommonAncestor(root.left, p, q);
-        } else if (root.val < p.val && root.val < q.val) {
-            return lowestCommonAncestor(root.right, p, q);
-        } else {
-            return null;
-        }
-    }
-
-    /**
      * 获取目标节点路径，以字符串方式输出
      * @param root
      * @param target
@@ -207,87 +151,24 @@ public class BinarySearchTree {
         return null;
     }
 
-    /**
-     * 根据数组 创建完全二叉树
-     * @param array
-     * @return
-     */
-    public static TreeNode createBinaryTree(Integer[] array){
-        if(array == null || array.length < 1){
-            return null;
-        }
-        List<TreeNode> nodeList = new ArrayList<>();
-        for (Integer val: array) {
-            if(val == null){
-                continue;
-            }
-            nodeList.add(new TreeNode(val));
-        }
-        for (int i = 0; i <= nodeList.size() / 2 - 1; i++) {
-            TreeNode TreeNode = nodeList.get(i);
-            int leftIndex = 2 * i + 1;
-            int rightIndex = 2 * i + 2;
-            TreeNode.left = leftIndex >= nodeList.size() ? null : nodeList.get(leftIndex);
-            TreeNode.right = rightIndex >= nodeList.size() ? null : nodeList.get(rightIndex);
-        }
-        return nodeList.get(0);
-    }
+    private int sum = 0;
 
     /**
-     * 打印树(只能打出层级关系，无法区分左右节点)
-     * @param root
+     * 给定二叉查找树，要求对二叉查找树上的每一个数字进行修改，其值为原值加上树中比其大的数。
      */
-    private static void printTree(TreeNode root) {
-        if (root == null)
+    public TreeNode convertBST(TreeNode root) {
+        inorderTraversal(root);
+        return root;
+    }
+
+    public void inorderTraversal(TreeNode root){
+        // 右 根 左 的中序遍历
+        if(root == null){
             return;
-        Queue<TreeNode> queue = new LinkedList<>();
-
-        int current;//当前层 还未打印的结点个数
-        int next;//下一层结点个数
-
-        queue.offer(root);
-        current = 1;
-        next = 0;
-        while (!queue.isEmpty()) {
-            TreeNode currentNode = queue.poll();
-            System.out.printf("%-4d", currentNode.val);
-            current--;
-
-            if (currentNode.left != null) {
-                queue.offer(currentNode.left);
-                next++;
-            }
-            if (currentNode.right != null) {
-                queue.offer(currentNode.right);
-                next++;
-            }
-            if (current == 0) {
-                System.out.println();
-                current = next;
-                next = 0;
-            }
         }
-
-    }
-
-    public static void main(String[] args) {
-//        Integer[] array1 = {1,null,2,3};
-//        Integer[] array2 = {0,1,2,3,4,5};
-        Integer[] array3 = {5,3,8,1,4,6,9};
-        TreeNode root = createBinaryTree(array3);
-        printTree(root);
-
-//        System.out.println("===================遍历");
-//        System.out.println(TreeNode.scanNodes(root,"中序"));
-//        List<Integer> scanRes = BinarySearchTree.traversalWithoutRecursive(root,"中序");
-//        System.out.println(JSONObject.toJSONString(scanRes));
-//
-//        System.out.println("===================最小共同祖先");
-//        TreeNode ancestor = BinarySearchTree.lowestCommonAncestor(root, new TreeNode(7), new TreeNode(8));
-//        System.out.println(JSONObject.toJSONString(ancestor));
-
-        System.out.println("====================二叉搜索树添加节点");
-        TreeNode res = BinarySearchTree.addNode(root, 2);
-        printTree(res);
+        inorderTraversal(root.right);
+        root.val += sum;
+        sum = root.val;
+        inorderTraversal(root.left);
     }
 }

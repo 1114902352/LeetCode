@@ -1,31 +1,38 @@
 package com.algorithm.data.BinaryTree;
 
+/**
+ * 这道题给了我们一个数组，让我们创建一个最大二叉树，创建规则是数组中的最大值为根结点，
+ * 然后分隔出的左右部分再分别创建最大二叉树
+ */
 public class MaximumBinaryTree {
 
-    public TreeNode constructMaximumBinaryTree(int[] nums) {
+    public static TreeNode constructMaximumBinaryTree(int[] nums) {
         if(nums == null || nums.length == 0){
             return null;
         }
         return invoke(nums,0,nums.length-1);
     }
 
-    private TreeNode invoke(int[] nums,int i,int j){
-        int maxIndex = this.getMaxIndex(nums, i, j);
-        TreeNode left = null;
-        if(i <= maxIndex-1){
-            left = invoke(nums,i,maxIndex-1);
+    /**
+     * 递归分治
+     * @param nums 源数据
+     * @param i 左边界
+     * @param j 右边界
+     * @return 构造的节点
+     */
+    private static TreeNode invoke(int[] nums,int i,int j){
+        Integer maxIndex = getMaxIndex(nums, i, j);
+        TreeNode current = new TreeNode(nums[maxIndex]);
+        if(maxIndex > i){
+            current.left = invoke(nums, i, maxIndex - 1);
         }
-        TreeNode right = null;
-        if(maxIndex+1 <= j){
-            right = invoke(nums,maxIndex+1,j);
+        if(maxIndex < j){
+            current.right = invoke(nums,maxIndex+1,j);
         }
-        TreeNode root = new TreeNode(nums[maxIndex]);
-        root.left = left;
-        root.right = right;
-        return root;
+        return current;
     }
 
-    private Integer getMaxIndex(int[] nums,int i,int j){
+    private static Integer getMaxIndex(int[] nums,int i,int j){
         if(i==j){
             return i;
         }
@@ -35,21 +42,15 @@ public class MaximumBinaryTree {
                 max = i;
             }
         }
+
         return max;
     }
 
-    public static void main(String[] args) {
-        MaximumBinaryTree util = new MaximumBinaryTree();
-        int[] nums = {3,2,1,6,0,5};
-        System.out.println(util.constructMaximumBinaryTree(nums));
-//        System.out.println(JSONObject.toJSONString());
-    }
 
-    class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
+    public static void main(String[] args) {
+        int[] nums = {3,2,1,6,0,5};
+        TreeNode root = constructMaximumBinaryTree(nums);
+        BTreePrinter.printNode(root);
     }
 }
 

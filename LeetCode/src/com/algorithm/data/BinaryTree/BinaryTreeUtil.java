@@ -101,6 +101,44 @@ public class BinaryTreeUtil {
     }
 
     /**
+     * 广度优先遍历 按层级输出
+     * @param root 根节点
+     * @return 结果
+     */
+    public static List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> ret = new ArrayList<>();
+        if(root == null){
+            return ret;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        TreeNode current;
+        List<Integer> level = new ArrayList<>();
+        int curLevel = 1;// 当前层级节点数量
+        int nextLevel = 0;// 下层层级节点数量
+        while(!queue.isEmpty()){
+            current = queue.poll();
+            level.add(current.val);
+            curLevel--;
+            if(current.left != null){
+                queue.offer(current.left);
+                nextLevel++;
+            }
+            if(current.right != null){
+                queue.offer(current.right);
+                nextLevel++;
+            }
+            if(curLevel == 0){// 当前层级已遍历完，重置指针
+                curLevel = nextLevel;
+                nextLevel = 0;
+                ret.add(level);
+                level = new ArrayList<>();
+            }
+        }
+        return ret;
+    }
+
+    /**
      * 二叉树遍历 先序/中序/后序
      * @param root 当前节点
      * @param flag 排序规则的标识

@@ -1,10 +1,10 @@
 package com.algorithm.data.BinaryTree;
 
 public class TreeNode{
-	int val;
-	TreeNode left;
-	TreeNode right;
-	TreeNode(int val) {
+	public int val;
+	public TreeNode left;
+	public TreeNode right;
+	public TreeNode(int val) {
 		this.val = val;
 	}
 	public int getVal() {

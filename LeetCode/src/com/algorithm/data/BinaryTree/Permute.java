@@ -3,6 +3,7 @@ package com.algorithm.data.BinaryTree;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //        Input: [1,2,3]
@@ -55,5 +56,4 @@ public class Permute {
         List<List<Integer>> res = permute(nums);
         System.out.println(JSONObject.toJSONString(res));
     }
-
 }

@@ -17,6 +17,8 @@ import java.util.Stack;
  * 二叉树遍历 ，根是A，前序遍历就是ABC，中序遍历就是BAC，后序遍历就是BCA，根据A的位置决定
  * 遍历注意点：有子节点要先去找子节点，空要补足，再按上述顺序去找
  *
+ * 深度优先遍历包含前序/后序/中序
+ *
  * 满二叉树的定义是除了叶子结点，其它结点左右孩子都有,深度为k的满二叉树，结点数就是2的k次方减1
  * 完全二叉树：除了最大的层次即成为一颗满二叉树且层次最大那层所有的结点均向左靠齐，即集中在左面的位置上，不能有空位置。
  *
@@ -52,29 +54,6 @@ public class BinaryTreeUtil {
             treeNode.right = rightIndex >= nodeList.size() ? null : nodeList.get(rightIndex);
         }
         return nodeList.get(0);
-    }
-
-    /**
-     * 深度优先遍历 Depth First Search
-     * @param root 根节点
-     * @return 遍历结果
-     */
-    public static String dfs(TreeNode root){
-        StringBuilder ret = new StringBuilder();
-        Stack<TreeNode> stack = new Stack<>();
-        TreeNode p;
-        stack.push(root);
-        while(!stack.isEmpty()){
-            p = stack.pop();
-            if(p.right != null){
-                stack.push(p.right);
-            }
-            if(p.left != null){
-                stack.push(p.left);
-            }
-            ret.append(p.val).append(" ");
-        }
-        return ret.toString();
     }
 
     /**
@@ -139,33 +118,58 @@ public class BinaryTreeUtil {
     }
 
     /**
-     * 二叉树遍历 先序/中序/后序
-     * @param root 当前节点
-     * @param flag 排序规则的标识
-     * @return 输出字符串
+     * 非递归先序遍历1
+     * @return 结果
      */
-    public static String scanNodes(TreeNode root, String flag) {
-        if (root == null) {
-            return " ";
+    public static List<Integer> preorder1(TreeNode root){
+        List<Integer> ret = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode p;
+        stack.push(root);
+        while(!stack.isEmpty()){
+            p = stack.pop();
+            if(p.right != null){
+                stack.push(p.right);
+            }
+            if(p.left != null){
+                stack.push(p.left);
+            }
+            ret.add(p.val);
         }
-        if ("先序".equals(flag)) {
-            return root.val + scanNodes(root.left, flag) + scanNodes(root.right, flag);
-        } else if ("中序".equals(flag)) {
-            return scanNodes(root.left, flag) + root.val + scanNodes(root.right, flag);
-        } else {
-            return scanNodes(root.left, flag) + scanNodes(root.right, flag) + root.val;
+        return ret;
+    }
+
+    /**
+     * 非递归先序遍历2
+     * @return 结果
+     */
+    public static List<Integer> preorder2(TreeNode root){
+        List<Integer> ret = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode p = root;
+        while (!stack.isEmpty() || p != null) {
+            while(p != null){
+                stack.push(p);
+                ret.add(p.val);
+                p = p.left;
+            }
+            if (!stack.isEmpty()) {
+                p = stack.pop();
+                p = p.right;
+            }
         }
+        return ret;
     }
 
     /**
      * 非递归的中序遍历
      * @return 结果
      */
-    public static List<Integer> inorderTraversal(TreeNode root){
+    public static List<Integer> inorder(TreeNode root){
         List<Integer> ret = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         TreeNode p = root;
-        // 中序输出根节点时，stack = 0，所以此处循环条件需要加上p!=null
+        // 中序输出根节点时，stack.size == 0，所以此处循环条件需要加上p!=null
         while(p != null || !stack.isEmpty()){
             while(p != null){
                 stack.push(p);
@@ -185,27 +189,49 @@ public class BinaryTreeUtil {
      * @return 结果
      */
     public static List<Integer> postOrder(TreeNode root){
-        List<Integer> alist = new ArrayList<>();
+        List<Integer> ret = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        if(root == null)
-            return alist;
-        TreeNode cur,pre = null;
-        stack.push(root);
-        while(!stack.empty()){
-            cur = stack.peek();
-            if((cur.left == null && cur.right == null) || (pre != null && (cur.left == pre || cur.right == pre))){
-                TreeNode temp = stack.pop();
-                alist.add(temp.val);
-                pre = temp;
+        // 定义两个指针，cur 指向当前节点，pre 指向上一个出栈的节点
+        TreeNode cur = root, pre = null;
+        while(!stack.isEmpty() || cur != null){
+            while(cur != null){
+                stack.push(cur);
+                cur = cur.left;
             }
-            else{
-                if(cur.right != null)
-                    stack.push(cur.right);
-                if(cur.left != null)
-                    stack.push(cur.left);
+            if(!stack.isEmpty()){
+                TreeNode temp = stack.peek();// 出栈检查有没有右节点
+                // 有右节点 且 右节点不等于已经出栈节点(即右节点没有访问过)，则当前节点指向右节点，访问右节点
+                if(temp.right != null && temp.right != pre){
+                    cur = temp.right;
+                    continue;
+                }
+                // 没有右节点 或者 右节点已经被访问，则出栈当前元素
+                cur = stack.pop();
+                ret.add(cur.val);
+                pre = cur; // pre 指向出栈节点
+                cur = null;// 当前节点重置为空，防止再次寻找左节点
             }
         }
-        return alist;
+        return ret;
+    }
+
+    /**
+     * 二叉树遍历 先序/中序/后序
+     * @param root 当前节点
+     * @param flag 排序规则的标识
+     * @return 输出字符串
+     */
+    public static String scanNodes(TreeNode root, String flag) {
+        if (root == null) {
+            return " ";
+        }
+        if ("先序".equals(flag)) {
+            return root.val + scanNodes(root.left, flag) + scanNodes(root.right, flag);
+        } else if ("中序".equals(flag)) {
+            return scanNodes(root.left, flag) + root.val + scanNodes(root.right, flag);
+        } else {
+            return scanNodes(root.left, flag) + scanNodes(root.right, flag) + root.val;
+        }
     }
 
     /**
@@ -475,22 +501,18 @@ public class BinaryTreeUtil {
         return null;
     }
 
-    public static void testDFSAndBFS(){
-        Integer[] array = {1,2,3,4,5,6,7,8,9};
-        TreeNode root = createBinaryTree(array);
-        BTreePrinter.printNode(root);
-        System.out.println(dfs(root));
-        System.out.println(bfs(root));
-    }
 
     public static void testScanNodes(){
-        Integer[] array = {1,2,3,4,5,6};
+        Integer[] array = {1, 2, 3, 4, 5, 6, 7, 8,null,null,9};
         TreeNode root = createBinaryTree(array);
         BTreePrinter.printNode(root);
         System.out.println("先序遍历:" + scanNodes(root, "先序"));
         System.out.println("中序遍历:" + scanNodes(root, "中序"));
         System.out.println("后序遍历:" + scanNodes(root, "后序"));
-        System.out.println("中序遍历:" + JSONObject.toJSONString(inorderTraversal(root)));
+        System.out.println("非递归前序遍历:" + JSONObject.toJSONString(preorder1(root)));
+        System.out.println("非递归中序遍历:" + JSONObject.toJSONString(inorder(root)));
+        System.out.println("非递归后序遍历:" + JSONObject.toJSONString(postOrder(root)));
+        System.out.println("层级遍历：" + JSONObject.toJSONString(bfs(root)));
     }
 
     public static void testDept(){

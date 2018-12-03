@@ -12,7 +12,6 @@ public class Subsequence {
      * d(3)=Max{d(2)}+1=2 LIS={3,4}
      * d(4)=Max{d(1),d(2),d(3)}+1=3 LIS={3,4,8}
      * d(5)=Max{d(1),d(2),d(3)}+1=3 LIS={3,4,6}
-     * d(6)=Max{d(1),d(2),d(3),d(5)}+1=4 LIS={3,4,6,7}
      * ...
      * d(i)=Max{0, d(j)}+1,其中j<i,A[j]<=A[i]
      */
